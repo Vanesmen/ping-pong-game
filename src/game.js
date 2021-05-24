@@ -1,4 +1,6 @@
 import { Canvas } from "./canvas";
+import { Control } from "./control";
+import { RenderUI } from "./renderUI";
 
 class Game {
     constructor() {
@@ -6,7 +8,12 @@ class Game {
             ["background", new Canvas],
             ["gameLayer", new Canvas],
             ["ui", new Canvas],
-        ])
+        ]);
+
+        this.control1 = new Control([ [38, "up"], [40, "down"] ]);
+        this.control2 = new Control([ [87, "up"], [83, "down"] ]);
+
+        this.UI = new RenderUI(this);
 
         this.init();
     }
@@ -27,6 +34,7 @@ class Game {
     }
 
     loop(time) {
+        this.update(time);
         requestAnimationFrame(time => this.loop(time));
     }
 }
