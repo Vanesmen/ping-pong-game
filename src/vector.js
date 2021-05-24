@@ -8,7 +8,7 @@ export class Vector {
     }
 
     setDirection(direction, speed) {
-        his.direction = direction;
+        this.direction = direction;
         this.peed = speed;
         this.dy = 0;
 

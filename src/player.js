@@ -11,7 +11,7 @@ export class Player extends Body {
     }
 
     drow() {
-        this.game.screen.get("gamelayer").drowRect(this.x, this.y, this.width, this.height, this.color);
+        this.game.screen.get("gameLayer").drowRect(this.x, this.y, this.width, this.height, this.color);
     }
 
     scoreInc() {
@@ -26,10 +26,10 @@ export class Player extends Body {
                 this.y = 0;
             }
         } else if ( this.control.down ) {
-            if ( this.y + this.height < this.game.screen.get("gamelayer").element.height ) {
+            if ( this.y + this.height < this.game.screen.get("gameLayer").element.height ) {
                 this.direction("down");
             } else {
-                this.y = this.game.screen.get("gamelayer").element.height - this.height;
+                this.y = this.game.screen.get("gameLayer").element.height - this.height;
             }
         } else {
             this.direction("idle");
