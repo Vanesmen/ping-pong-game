@@ -1,4 +1,6 @@
+import { Ball } from "./ball";
 import { Canvas } from "./canvas";
+import { Collider } from "./collider";
 import { Control } from "./control";
 import { Player } from "./player";
 import { RenderUI } from "./renderUI";
@@ -17,6 +19,10 @@ class Game {
         this.player1 = new Player(this, 10, 200, this.control1, "#52C5D4");
         this.player2 = new Player(this, this.screen.get("gameLayer").element.width - 20, 200, this.control2, "#EDEDED");
 
+        this.ball = new Ball(this, (this.screen.get("gameLayer").element.width / 2), 100, 10, "#D3F349");
+
+        this.collider = new Collider();
+
         this.UI = new RenderUI(this);
 
         this.init();
@@ -34,6 +40,8 @@ class Game {
     }
 
     update(time) {
+        this.ball.update(time);
+
         this.player1.update(time);
         this.player2.update(time);
     }
@@ -43,6 +51,7 @@ class Game {
 
         this.update(time);
 
+        this.ball.draw();
         this.player1.drow();
         this.player2.drow();
 
